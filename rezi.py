@@ -1,5 +1,7 @@
 #coding:utf-8
 import requests as req
+import sqlinsert 
+
 
 if __name__ == '__main__':
         url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&isbn={}&applicationId=1034070708300315308" #最後の日付はapiのバージョンっぽい
@@ -10,11 +12,6 @@ if __name__ == '__main__':
         while(True):
                 isbn    = input() #つないだ状態でピッするならこっち
                 url1 = url.format(isbn)
- # payload = {
-#     'format':'json',
-#         'isbn':isbn,
-#     'applicationId':app_id
-#         }
                 res = req.get(url1)
                 data = res.json()
                 data2 = data["Items"]
@@ -24,19 +21,13 @@ if __name__ == '__main__':
                 author = data["Items"][0]["Item"]["author"]
                 isbn = data["Items"][0]["Item"]["isbn"]
 
-
-                # print(data)
-                # print(type(data))
-                # print(data2)
-                # print('title' in data2[0]["Item"])#成功
-                # print(data2[0]["Item"]["title"])
+                #一応ターミナルに表示してあげる
                 print(title)
                 print(author)
                 print(isbn)
 
-                
-                # print(data["page"])
+                #SQLに挿入
+                SQLInsert(title, author, isbn)
 
-# print(url1)
                 if(isbn == "c"):
                         break	
