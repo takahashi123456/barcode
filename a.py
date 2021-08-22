@@ -1,10 +1,9 @@
 import sqlite3
 
 #それぞれの変数に入れてあげるとsqlに挿入される
-# def SQLInsert(titleName,publisherName,AuthorName,Price,ISBN): 
 def SQLInsert(titleName,AuthorName,ISBN): 
 
-	connect = sqlite3.connect('db') 
+	connect = sqlite3.connect('db.sqlite3') 
 
 	cur = connect.cursor()
 	
@@ -18,3 +17,7 @@ def SQLInsert(titleName,AuthorName,ISBN):
 	cur.execute(sql,insertData)
 	connect.commit()
 	connect.close()
+
+
+
+SQLInsert("testName","testPub","testAuthor")

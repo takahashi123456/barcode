@@ -1,6 +1,6 @@
 #coding:utf-8
 import requests as req
-import sqlinsert 
+from sqlinsert import SQLInsert
 
 
 if __name__ == '__main__':
